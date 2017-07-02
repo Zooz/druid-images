@@ -1,13 +1,20 @@
-FROM ubuntu:14.04
+FROM paymentsos/druid-base:ubuntu14java8
 
+MAINTAINER jacob.koren@zooz.com
 
-# Java 8
-RUN   apt-get update  \
-      && apt-get install -y software-properties-common \
-      && apt-add-repository -y ppa:webupd8team/java \
-      && apt-get purge --auto-remove -y software-properties-common \
-      && apt-get update \
-      && echo oracle-java-8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
-      && apt-get install -y oracle-java8-installer \
-      && apt-get install -y oracle-java8-set-default \
-      && rm -rf /var/cache/oracle-jdk8-installer
+ENV DRUID_DIR=/druid-0.9.2
+ENV DRUID_PROP_DIR=/druid-0.9.2/conf/druid/_common/
+
+RUN curl http://static.druid.io/artifacts/releases/druid-0.9.2-bin.tar.gz --output druid-0.9.2-bin.tar.gz
+COPY mysql-metadata-storage-0.9.2.tar.gz /
+RUN mkdir -p $DRUID_DIR/extensions/graphite-emitter && mkdir -p $DRUID_DIR/extensions/statsd-emitter
+COPY statsd-emitter $DRUID_DIR/extensions/statsd-emitter
+
+RUN tar -xzf druid-0.9.2-bin.tar.gz \
+	&& tar -xzf mysql-metadata-storage-0.9.2.tar.gz \
+	&& sudo mv mysql-metadata-storage $DRUID_DIR/extensions/
+
+RUN find $DRUID_DIR/conf/druid -name jvm.config | while read line; do sed -i "s/var\/tmp/\/var\/tmp/g" $line; done
+
+COPY common.runtime.properties $DRUID_PROP_DIR
+COPY jets3t.properties $DRUID_PROP_DIR
