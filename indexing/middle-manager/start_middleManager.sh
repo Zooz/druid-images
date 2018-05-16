@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "Running druid middleManager node"
-DRUID_DIR=/druid-0.9.2
+DRUID_DIR=/druid-0.12.0
 SCRIPTS_HOME=$DRUID_DIR/bin/deployment
 
 cd $DRUID_DIR

@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "Installing broker services: druid broker……"
-DRUID_DIR=/druid-0.9.2
+DRUID_DIR=/druid-0.12.0
 
 cd $DRUID_DIR
 

@@ -1,6 +1,6 @@
 FROM BASE_IMAGE
 
-ENV DRUID_DIR=/root/druid-0.9.2
+ENV DRUID_DIR=/root/druid-0.12.0
 COPY start_coordinator.sh /
 
 ENTRYPOINT ["/start_coordinator.sh"]
