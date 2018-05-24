@@ -1,7 +1,6 @@
 #!/bin/sh
 echo "Installing coordinator node"
 DRUID_DIR=/druid-0.12.0
-SCRIPTS_HOME=$DRUID_DIR/bin/deployment
 
 cd $DRUID_DIR
 
@@ -17,6 +16,7 @@ sed -i "s/DBUser/$DBUser/g" $DRUID_DIR/conf/druid/_common/common.runtime.propert
 sed -i "s/DBPass/$DBPass/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/DBHost/$DBHost/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\"\]/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 sed -i  "s/-Xms3g/-Xms1g/g" $CONF_DIR/jvm.config
 

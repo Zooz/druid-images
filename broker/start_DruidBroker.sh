@@ -15,6 +15,7 @@ sed -i "s/DBUser/$DBUser/g" $DRUID_DIR/conf/druid/_common/common.runtime.propert
 sed -i "s/DBPass/$DBPass/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/DBHost/$DBHost/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\", \"io.druid.client.cache.CacheMonitor\"\]/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 cat $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/druid.port=8082/druid.port=$PORT0/g" $CONF_DIR/runtime.properties

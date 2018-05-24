@@ -1,7 +1,6 @@
 #!/bin/sh
 echo "Running druid middleManager node"
 DRUID_DIR=/druid-0.12.0
-SCRIPTS_HOME=$DRUID_DIR/bin/deployment
 
 cd $DRUID_DIR
 CONF_DIR=$DRUID_DIR/conf/druid/middleManager
@@ -22,12 +21,12 @@ sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 sed -i "s/Xmx64m/Xmx1024m/g" $CONF_DIR/jvm.config
 sed -i "s/Xms64m/Xms128m/g" $CONF_DIR/jvm.config
+sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\"]/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+
 
 sed -i "s/DeepStorageBucket/$DSBUCKET/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 echo "druid.indexer.logs.directory=$MESOS_SANDBOX" >> $CONF_DIR/runtime.properties
-
-echo druid.indexer.logs.kill.durationToRetain=60000 >> $CONF_DIR/runtime.properties
 
 exec java `cat conf/druid/middleManager/jvm.config | xargs` -cp conf/druid/_common:conf/druid/middleManager:lib/* io.druid.cli.Main server middleManager
 

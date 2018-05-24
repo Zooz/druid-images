@@ -16,5 +16,5 @@ RUN tar -xzf druid-0.12.0-bin.tar.gz \
 
 RUN find $DRUID_DIR/conf/druid -name jvm.config | while read line; do sed -i "s/var\/tmp/\/var\/tmp/g" $line; done
 
-COPY common.runtime.properties $DRUID_PROP_DIR
+COPY common.runtime.properties.old $DRUID_PROP_DIR
 COPY jets3t.properties $DRUID_PROP_DIR

@@ -23,7 +23,7 @@
 
 # This is not the full list of Druid extensions, but common ones that people often use. You may need to change this list
 # based on your particular setup.
-druid.extensions.loadList=["druid-kafka-eight", "druid-s3-extensions", "druid-histogram", "druid-datasketches", "druid-lookups-cached-global", "mysql-metadata-storage", "statsd-emitter", "druid-kafka-indexing-service"]
+druid.extensions.loadList=["druid-kafka-eight", "druid-s3-extensions", "druid-histogram", "druid-datasketches", "druid-lookups-cached-global", "mysql-metadata-storage", "statsd-emitter"]
 
 # If you have a different version of Hadoop, place your Hadoop client jar files in your hadoop-dependencies directory
 # and uncomment the line below to point to your directory.
@@ -81,6 +81,8 @@ druid.metadata.storage.connector.password=DBPass
 druid.storage.type=s3
 druid.storage.bucket=DeepStorageBucket
 druid.storage.baseKey=druid/segments
+#druid.s3.accessKey=<S3Key>
+#druid.s3.secretKey=<S3Secret>
 
 #
 # Indexing service logs
@@ -111,8 +113,6 @@ druid.selectors.coordinator.serviceName=druid/coordinator
 #
 
 # statsd-emitter
-druid.monitoring.monitors=MONITORS
-# ["io.druid.java.util.metrics.JvmMonitor", "io.druid.server.metrics.QueryCountStatsMonitor"]
 druid.emitter=statsd
 druid.emitter.statsd.hostname=TELEGRAF_HOST
 druid.emitter.statsd.port=TELEGRAF_PORT
