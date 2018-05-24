@@ -7,7 +7,7 @@ ENV DRUID_PROP_DIR=/druid-0.12.0/conf/druid/_common/
 
 RUN curl http://static.druid.io/artifacts/releases/druid-0.12.0-bin.tar.gz --output druid-0.12.0-bin.tar.gz
 COPY mysql-metadata-storage-0.12.0.tar.gz /
-RUN mkdir -p $DRUID_DIR/extensions/graphite-emitter && mkdir -p $DRUID_DIR/extensions/statsd-emitter
+RUN  mkdir -p $DRUID_DIR/extensions/statsd-emitter
 COPY statsd-emitter $DRUID_DIR/extensions/statsd-emitter
 
 RUN tar -xzf druid-0.12.0-bin.tar.gz \
