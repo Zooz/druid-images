@@ -25,6 +25,8 @@ echo "Deploying Broker services ..."
 
 sed -i  "s/-Xms24g/-Xms4g/g" $DRUID_DIR/conf/druid/broker/jvm.config
 sed -i  "s/-Xmx24g/-Xmx4g/g" $DRUID_DIR/conf/druid/broker/jvm.config
+sed -i  "s/druid.processing.numThreads=7/druid.processing.numThreads=4/g" $DRUID_DIR/conf/druid/broker/jvm.config
+
 
 exec java `cat conf/druid/broker/jvm.config | xargs` -cp conf/druid/_common:conf/druid/broker:lib/* io.druid.cli.Main server broker
 
