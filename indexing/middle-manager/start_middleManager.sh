@@ -19,7 +19,7 @@ sed -i "s/DBPass/$DBPass/g" $DRUID_DIR/conf/druid/_common/common.runtime.propert
 sed -i "s/DBHost/$DBHost/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
-sed -i "s/Xmx64m/Xmx1024m/g" $CONF_DIR/jvm.config
+sed -i "s/Xmx64m/Xmx1300m/g" $CONF_DIR/jvm.config
 sed -i "s/Xms64m/Xms128m/g" $CONF_DIR/jvm.config
 sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\"]/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
