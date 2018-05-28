@@ -19,7 +19,7 @@ sed -i "s/DBPass/$DBPass/g" $DRUID_DIR/conf/druid/_common/common.runtime.propert
 sed -i "s/DBHost/$DBHost/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
-sed -i "s/Xmx64m/Xmx3000m/g" $CONF_DIR/jvm.config
+sed -i "s/Xmx64m/Xmx3096m/g" $CONF_DIR/jvm.config
 sed -i "s/Xms64m/Xms128m/g" $CONF_DIR/jvm.config
 sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\"]/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
@@ -27,6 +27,8 @@ sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\"]/g" $DRUID_DIR/co
 sed -i "s/DeepStorageBucket/$DSBUCKET/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 echo "druid.indexer.logs.directory=$MESOS_SANDBOX" >> $CONF_DIR/runtime.properties
+sed -i "s/Xmx2g/Xmx2900m/g" $CONF_DIR/runtime.properties
+
 
 exec java `cat conf/druid/middleManager/jvm.config | xargs` -cp conf/druid/_common:conf/druid/middleManager:lib/* io.druid.cli.Main server middleManager
 
