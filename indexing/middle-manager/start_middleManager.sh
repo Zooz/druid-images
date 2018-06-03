@@ -17,7 +17,9 @@ sed -i "s/TELEGRAF_PREFIX/$TELEGRAF_PREFIX/g" $DRUID_DIR/conf/druid/_common/comm
 sed -i "s/DBUser/$DBUser/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/DBPass/$DBPass/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/DBHost/$DBHost/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+
 sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+sed -i "s/ZKPATH/$ZKpath/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 sed -i "s/Xmx64m/Xmx3096m/g" $CONF_DIR/jvm.config
 sed -i "s/Xms64m/Xms128m/g" $CONF_DIR/jvm.config

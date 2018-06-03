@@ -15,7 +15,10 @@ sed -i "s/TELEGRAF_PREFIX/$TELEGRAF_PREFIX/g" $DRUID_DIR/conf/druid/_common/comm
 sed -i "s/DBUser/$DBUser/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/DBPass/$DBPass/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 sed -i "s/DBHost/$DBHost/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+
 sed -i "s/ZKIP/$ZKip/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+sed -i "s/ZKPATH/$ZKpath/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
+
 sed -i "s/MONITORS/\[\"io.druid.java.util.metrics.JvmMonitor\"\]/g" $DRUID_DIR/conf/druid/_common/common.runtime.properties
 
 sed -i  "s/-Xms3g/-Xms1g/g" $CONF_DIR/jvm.config
