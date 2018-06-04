@@ -6,7 +6,7 @@ mv /tranquility-distribution-0.8.1 /tranquility
 
 filename=$(echo $METRICS_CONFIG | rev | cut -d'/' -f1 | rev);
 
-~/local/bin/aws s3 cp $METRICS_CONFIG /mnt/mesos/sandbox/$filename.template
+/usr/local/bin/aws s3 cp $METRICS_CONFIG /mnt/mesos/sandbox/$filename.template
 
 awk -v port=$PORT1 '{gsub(/<PORT>/,port);print}' /mnt/mesos/sandbox/$filename.template > /mnt/mesos/sandbox/$filename
 
